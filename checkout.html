@@ -1,24 +1,107 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Checkout</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Checkout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body {
+      background: #f8f6f3;
+      font-family: 'Poppins', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .page-container {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 50px;
+      background: #ffffff;
+      border-radius: 26px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 40px;
+    }
+
+    .checkout-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .checkout-form input,
+    .checkout-form textarea {
+      padding: 16px;
+      border-radius: 14px;
+      border: 1px solid #ddd;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    .checkout-form textarea {
+      grid-column: span 2;
+      resize: none;
+      height: 90px;
+    }
+
+    .checkout-form button {
+      grid-column: span 2;
+      margin-top: 30px;
+      padding: 18px;
+      background: linear-gradient(135deg, #000, #333);
+      color: white;
+      border: none;
+      border-radius: 40px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .checkout-form button:hover {
+      opacity: 0.9;
+    }
+
+    @media (max-width: 600px) {
+      .checkout-form {
+        grid-template-columns: 1fr;
+      }
+
+      .checkout-form textarea,
+      .checkout-form button {
+        grid-column: span 1;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<h2>Delivery Address</h2>
+  <div class="page-container">
 
-<form action="payment.html">
-  <input required placeholder="Full Name">
-  <input required placeholder="Address">
-  <input required placeholder="City">
-  <input required placeholder="Pincode">
-  <input required placeholder="Phone">
+    <h1>Delivery Information</h1>
 
-  <button type="submit">Continue</button>
-</form>
+    <form class="checkout-form" action="payment.html">
 
-<script src="script.js"></script>
+      <input type="text" placeholder="Full Name" required>
+      <input type="text" placeholder="Phone Number" required>
+
+      <input type="text" placeholder="City" required>
+      <input type="text" placeholder="Pincode" required>
+
+      <textarea placeholder="Full Address" required></textarea>
+
+      <button type="submit">
+        Continue to Payment
+      </button>
+
+    </form>
+
+  </div>
+
 </body>
 </html>
