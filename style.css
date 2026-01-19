@@ -214,3 +214,12 @@
   border-radius: 30px;
   font-size: 16px;
   }
+.success {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.tick {
+  font-size: 120px;
+  color: #007bff;
+  }
