@@ -42,3 +42,20 @@ addToCartButtons.forEach((btn) => {
     alert(name + " added to cart!");
   });
 });
+// ===== ADD TO CART (safe add-on) =====
+document.addEventListener("DOMContentLoaded", function () {
+  const buttons = document.querySelectorAll(".add-to-cart");
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const name = this.dataset.name;
+      const price = this.dataset.price;
+
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push({ name, price });
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      alert(name + " added to cart!");
+    });
+  });
+});
