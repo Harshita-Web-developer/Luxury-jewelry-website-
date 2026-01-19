@@ -23,6 +23,11 @@
   </section>
 
   <div id="cart-items"></div>
+<div id="price-box"></div>
+
+<a href="checkout.html">
+  <button class="checkout-btn">Checkout</button>
+</a>
   
   <footer class="footer">
     <p>© 2026 Luxury Jewelry. All rights reserved.</p>
@@ -47,4 +52,39 @@
       )
       .join("");
   }
+</script>
+<script>
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const itemsBox = document.getElementById("cart-items");
+  const priceBox = document.getElementById("price-box");
+
+  let subtotal = 0;
+
+  if (cart.length === 0) {
+    itemsBox.innerHTML = "<p>Your bag is empty.</p>";
+  } else {
+    itemsBox.innerHTML = cart.map(item => {
+      subtotal += item.price;
+      return `
+        <div class="cart-item">
+          <img src="${item.image}">
+          <div>
+            <h4>${item.name}</h4>
+            <p>₹${item.price}</p>
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  const tax = Math.round(subtotal * 0.05);
+  const delivery = 99;
+  const total = subtotal + tax + delivery;
+
+  priceBox.innerHTML = `
+    <p>Subtotal: ₹${subtotal}</p>
+    <p>Tax (5%): ₹${tax}</p>
+    <p>Delivery: ₹${delivery}</p>
+    <h3>Total: ₹${total}</h3>
+  `;
 </script>
