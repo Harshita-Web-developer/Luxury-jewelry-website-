@@ -127,3 +127,13 @@
     grid-template-columns: 1fr;
   }
   }
+/* 🔥 FORCE all product images to look perfect */
+.product-img,
+.product-card img {
+  width: 260px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
