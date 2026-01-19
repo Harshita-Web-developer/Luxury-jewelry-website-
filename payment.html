@@ -4,93 +4,131 @@
   <meta charset="UTF-8">
   <title>Payment</title>
   <link rel="stylesheet" href="style.css">
+
   <style>
     body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      max-width: 500px;
-      margin: auto;
+      margin: 0;
+      font-family: 'Poppins', Arial, sans-serif;
+      background: #f6f4f1;
+      color: #222;
     }
 
-    h2 {
+    .page-container {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 50px;
+      background: #ffffff;
+      border-radius: 28px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+    }
+
+    h1 {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 40px;
+      font-size: 34px;
     }
 
-    .box {
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      padding: 15px;
-      margin-bottom: 20px;
+    .section {
+      background: #fafafa;
+      border-radius: 20px;
+      padding: 25px;
+      margin-bottom: 30px;
+    }
+
+    .section h3 {
+      margin-top: 0;
+      margin-bottom: 15px;
     }
 
     .summary p {
       display: flex;
       justify-content: space-between;
-      margin: 6px 0;
+      font-size: 17px;
+      margin: 10px 0;
+    }
+
+    .summary hr {
+      margin: 15px 0;
+      border: none;
+      border-top: 1px solid #ddd;
+    }
+
+    .payment-method label {
+      display: block;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .payment-method input {
+      margin-right: 10px;
     }
 
     .pay-btn {
       width: 100%;
-      padding: 14px;
-      font-size: 16px;
-      background: black;
-      color: white;
+      margin-top: 30px;
+      padding: 20px;
+      font-size: 18px;
       border: none;
-      border-radius: 30px;
+      border-radius: 40px;
+      background: linear-gradient(135deg, #000, #333);
+      color: white;
       cursor: pointer;
     }
 
     .pay-btn:hover {
-      opacity: 0.9;
-    }
-
-    label {
-      display: block;
-      margin: 8px 0;
+      opacity: 0.92;
     }
   </style>
 </head>
 
 <body>
 
-  <h2>Payment</h2>
+  <div class="page-container">
 
-  <!-- ADDRESS CONFIRMATION -->
-  <div class="box">
-    <h3>Delivery Address</h3>
-    <p id="address">Saved from checkout</p>
+    <h1>Secure Payment</h1>
+
+    <!-- ADDRESS -->
+    <div class="section">
+      <h3>Delivery Address</h3>
+      <p>Your order will be delivered to the address you entered at checkout.</p>
+    </div>
+
+    <!-- ORDER SUMMARY -->
+    <div class="section summary" id="order-summary">
+      <!-- JS will fill this -->
+    </div>
+
+    <!-- PAYMENT METHODS -->
+    <div class="section payment-method">
+      <h3>Select Payment Method</h3>
+
+      <label>
+        <input type="radio" name="payment" checked>
+        UPI / Google Pay / PhonePe
+      </label>
+
+      <label>
+        <input type="radio" name="payment">
+        Credit / Debit Card
+      </label>
+
+      <label>
+        <input type="radio" name="payment">
+        Cash on Delivery
+      </label>
+    </div>
+
+    <!-- PAY BUTTON -->
+    <button class="pay-btn" onclick="payNow()">Pay Now</button>
+
   </div>
-
-  <!-- ORDER SUMMARY -->
-  <div class="box summary" id="order-summary"></div>
-
-  <!-- PAYMENT METHOD -->
-  <div class="box">
-    <h3>Select Payment Method</h3>
-
-    <label>
-      <input type="radio" name="pay" checked>
-      UPI / Google Pay / PhonePe
-    </label>
-
-    <label>
-      <input type="radio" name="pay">
-      Credit / Debit Card
-    </label>
-
-    <label>
-      <input type="radio" name="pay">
-      Cash on Delivery
-    </label>
-  </div>
-
-  <!-- PAY BUTTON -->
-  <button class="pay-btn" onclick="payNow()">Pay Now</button>
 
   <script>
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const summary = document.getElementById("order-summary");
+    const summaryBox = document.getElementById("order-summary");
 
     let subtotal = 0;
 
@@ -102,7 +140,7 @@
     const delivery = 99;
     const total = subtotal + tax + delivery;
 
-    summary.innerHTML = `
+    summaryBox.innerHTML = `
       <h3>Order Summary</h3>
       <p><span>Subtotal</span><span>₹${subtotal}</span></p>
       <p><span>Tax (5%)</span><span>₹${tax}</span></p>
