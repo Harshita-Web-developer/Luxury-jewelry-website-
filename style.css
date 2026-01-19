@@ -1,252 +1,99 @@
+/* =========================================
+   COMPLETE STYLE.CSS (Luxury Jewelry Theme)
+   ========================================= */
+
+:root {
+  --primary: #1e3a8a;      /* Royal Blue */
+  --secondary: #f5c16c;    /* Soft Gold */
+  --bg: #eef2ff;           /* Light blue background */
+  --card: #ffffff;
+  --text: #1f2937;
+  --shadow: rgba(30, 58, 138, 0.15);
+}
+
+/* -----------------------------------------
+   GLOBAL
+----------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: 'Poppins', Arial, sans-serif;
-  background: #f8f6f3; /* luxury light beige */
-  color: #222;
-}
-/* ===== BASIC RESET ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
+  background: linear-gradient(180deg, var(--bg), #ffffff);
+  color: var(--text);
 }
 
-/* ===== NAVBAR ===== */
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background: #fff;
-  border-bottom: 1px solid #eee;
-}
-
-.nav .logo {
-  font-size: 22px;
-  font-weight: bold;
-}
-
-.nav nav a {
-  margin-left: 20px;
+a {
+  color: inherit;
   text-decoration: none;
-  color: #333;
-  font-weight: 500;
 }
 
-/* ===== HERO ===== */
-.hero {
-  align-items: center;
-  gap: 30px;
-}
-
-.hero-img {
-  flex: 1;
-}
-.hero-text {
-  flex: 1;
-}
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 60px 40px;
-  gap: 40px;
-}
-
-.hero-text h1 {
-  font-size: 48px;
-  margin-bottom: 10px;
-}
-
-.hero-text p {
-  margin-bottom: 20px;
-  font-size: 18px;
-  color: #555;
-}
-
-.btn {
-  display: inline-block;
-  padding: 12px 25px;
-  text-decoration: none;
-  background: #000;
-  color: #fff;
-  border-radius: 10px;
-  font-weight: bold;
-}
-
-/* ===== ABOUT ===== */
-.about {
-  text-align: center;
-  padding: 40px 20px;
-}
-
-.about h2 {
-  font-size: 32px;
-  margin-bottom: 10px;
-}
-
-.about p {
-  color: #555;
-}
-
-/* ===== PRODUCT GRID ===== */
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  padding: 40px 40px;
-}
-
-.product-card {
-  text-align: center;
-  padding: 20px;
-  border: 1px solid #eee;
-  border-radius: 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.product-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-}
-
-.product-img {
-  width: 260px;
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-}
-
-.price {
-  font-weight: bold;
-  margin: 10px 0;
-}
-
-/* ===== FOOTER ===== */
-.footer {
-  text-align: center;
-  padding: 20px;
-  background: #fff;
-  border-top: 1px solid #eee;
-  margin-top: 20px;
-}
-
-/* ===== MOBILE ===== */
-@media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-  }
-
-  .product-grid {
-    grid-template-columns: 1fr;
-  }
-  }
-/* 🔥 FORCE all product images to look perfect */
-.product-img,
-.product-card img {
-  width: 260px;
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-}
-.hero-img img {
-  width: 100%;
-  max-width: 520px;   /* change this if needed */
-  max-height: 420px;  /* change this if needed */
-  object-fit: cover;
-  border-radius: 20px;
-}
-/* ===== HERO FIX ===== */
-.hero {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 40px 20px;
-  text-align: center;
-}
-
-.hero-text h1 {
-  font-size: 34px;
-}
-
-.hero-text p {
-  font-size: 16px;
-}
-
-.hero-img img {
-  width: 100%;
-  max-width: 420px;
-  max-height: 320px;
-  object-fit: cover;
-  border-radius: 20px;
-  margin: 0 auto;
-}
-
-/* Button size fix */
-.btn {
-  padding: 10px 20px;
-  font-size: 14px;
-  }
-.hero-image {
-  width: 100%;
-  max-width: 380px;  /* make it smaller */
-  max-height: 280px;
-  object-fit: cover;
-  border-radius: 18px;
-  margin: 0 auto;
-  display: block;
-  }
-.cart-item {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 20px;
-}
-
-.cart-item img {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 12px;
-}
-
-.checkout-btn {
-  background: black;
-  color: white;
-  padding: 14px 30px;
-  border-radius: 30px;
-  font-size: 16px;
-  }
-.success {
-  text-align: center;
-  margin-top: 100px;
-}
-
-.tick {
-  font-size: 120px;
-  color: #007bff;
-  }
+/* -----------------------------------------
+   MAIN CONTAINER (for cart/checkout/payment)
+----------------------------------------- */
 .page-container {
   max-width: 1100px;
   margin: 60px auto;
   padding: 40px;
-  background: #ffffff;
-  border-radius: 24px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
-  }
-h1 {
-  font-size: 32px;
-  margin-bottom: 30px;
+  background: var(--card);
+  border-radius: 28px;
+  box-shadow: 0 30px 60px var(--shadow);
 }
 
+/* -----------------------------------------
+   HEADINGS
+----------------------------------------- */
+h1, h2, h3 {
+  color: var(--primary);
+  margin: 0 0 20px 0;
+}
+
+h1 {
+  font-size: 34px;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 22px;
+}
+
+/* -----------------------------------------
+   BUTTONS (ALL BUTTONS)
+----------------------------------------- */
+button {
+  background: linear-gradient(135deg, var(--primary), #2563eb);
+  color: white;
+  border: none;
+  border-radius: 999px;
+  padding: 16px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(30, 58, 138, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(30, 58, 138, 0.5);
+}
+
+/* -----------------------------------------
+   CART PAGE
+----------------------------------------- */
 .cart-item {
   display: flex;
   gap: 20px;
   padding: 20px;
   border-bottom: 1px solid #eee;
+  background: #f8fafc;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  align-items: center;
 }
 
 .cart-item img {
@@ -261,22 +108,39 @@ h1 {
   font-size: 18px;
 }
 
-#price-box {
-  margin-top: 30px;
-  font-size: 18px;
+.cart-item p {
+  margin: 5px 0;
 }
 
-.checkout-btn {
-  margin-top: 40px;
-  width: 100%;
-  padding: 18px;
-  background: #111;
-  color: white;
-  border: none;
-  border-radius: 40px;
-  font-size: 18px;
-  cursor: pointer;
+.cart-item button {
+  margin-top: 10px;
+  background: #e11d48;
+  border-radius: 14px;
+  padding: 10px 18px;
 }
+
+#price-box {
+  background: linear-gradient(135deg, #dbeafe, #eef2ff);
+  padding: 20px;
+  border-radius: 20px;
+  margin-top: 30px;
+}
+
+#price-box p {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+#price-box h3 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+/* -----------------------------------------
+   CHECKOUT FORM
+----------------------------------------- */
 .checkout-form {
   display: grid;
   gap: 16px;
@@ -287,30 +151,63 @@ h1 {
   border-radius: 12px;
   border: 1px solid #ddd;
   font-size: 16px;
+  background: #f1f5f9;
+}
+
+.checkout-form input:focus {
+  border-color: var(--primary);
+  outline: none;
 }
 
 .checkout-form button {
   margin-top: 20px;
   padding: 18px;
-  background: #000;
-  color: white;
-  border: none;
-  border-radius: 40px;
   font-size: 18px;
-  }
+}
+
+/* -----------------------------------------
+   PAYMENT PAGE
+----------------------------------------- */
 .box {
   background: #fafafa;
+  border-left: 6px solid var(--primary);
   border-radius: 20px;
   padding: 25px;
   margin-bottom: 25px;
 }
 
+.summary p {
+  display: flex;
+  justify-content: space-between;
+  margin: 6px 0;
+}
+
+.summary hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 12px 0;
+}
+
 .pay-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
   background: linear-gradient(135deg, #000, #333);
 }
+
+/* -----------------------------------------
+   SUCCESS PAGE
+----------------------------------------- */
+.success {
+  background: linear-gradient(135deg, #eef2ff, #dbeafe);
+  padding: 80px 40px;
+  border-radius: 30px;
+  text-align: center;
+}
+
 .tick {
   font-size: 140px;
-  color: #2f80ed;
+  color: var(--primary);
   animation: pop 0.6s ease;
 }
 
@@ -318,3 +215,23 @@ h1 {
   0% { transform: scale(0); }
   100% { transform: scale(1); }
 }
+
+/* -----------------------------------------
+   RESPONSIVE (Mobile)
+----------------------------------------- */
+@media (max-width: 768px) {
+  .page-container {
+    margin: 30px 16px;
+    padding: 24px;
+  }
+
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cart-item img {
+    width: 100%;
+    height: auto;
+  }
+    }
