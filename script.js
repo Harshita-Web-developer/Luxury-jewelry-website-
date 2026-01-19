@@ -59,3 +59,20 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".add-to-cart").forEach(btn => {
+    btn.addEventListener("click", function () {
+      const item = {
+        name: this.dataset.name,
+        price: Number(this.dataset.price),
+        image: this.dataset.image
+      };
+
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push(item);
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      alert(item.name + " added to bag");
+    });
+  });
+});
