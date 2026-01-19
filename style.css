@@ -185,3 +185,12 @@
   padding: 10px 20px;
   font-size: 14px;
   }
+.hero-image {
+  width: 100%;
+  max-width: 380px;  /* make it smaller */
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: 18px;
+  margin: 0 auto;
+  display: block;
+  }
