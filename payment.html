@@ -1,10 +1,121 @@
-<h2>Payment</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+    }
 
-<button onclick="payNow()">Pay Now</button>
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-<script>
-function payNow() {
-  localStorage.removeItem("cart");
-  window.location.href = "success.html";
-}
-</script>
+    .box {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+
+    .summary p {
+      display: flex;
+      justify-content: space-between;
+      margin: 6px 0;
+    }
+
+    .pay-btn {
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      background: black;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+
+    .pay-btn:hover {
+      opacity: 0.9;
+    }
+
+    label {
+      display: block;
+      margin: 8px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Payment</h2>
+
+  <!-- ADDRESS CONFIRMATION -->
+  <div class="box">
+    <h3>Delivery Address</h3>
+    <p id="address">Saved from checkout</p>
+  </div>
+
+  <!-- ORDER SUMMARY -->
+  <div class="box summary" id="order-summary"></div>
+
+  <!-- PAYMENT METHOD -->
+  <div class="box">
+    <h3>Select Payment Method</h3>
+
+    <label>
+      <input type="radio" name="pay" checked>
+      UPI / Google Pay / PhonePe
+    </label>
+
+    <label>
+      <input type="radio" name="pay">
+      Credit / Debit Card
+    </label>
+
+    <label>
+      <input type="radio" name="pay">
+      Cash on Delivery
+    </label>
+  </div>
+
+  <!-- PAY BUTTON -->
+  <button class="pay-btn" onclick="payNow()">Pay Now</button>
+
+  <script>
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const summary = document.getElementById("order-summary");
+
+    let subtotal = 0;
+
+    cart.forEach(item => {
+      subtotal += item.price * item.qty;
+    });
+
+    const tax = Math.round(subtotal * 0.05);
+    const delivery = 99;
+    const total = subtotal + tax + delivery;
+
+    summary.innerHTML = `
+      <h3>Order Summary</h3>
+      <p><span>Subtotal</span><span>₹${subtotal}</span></p>
+      <p><span>Tax (5%)</span><span>₹${tax}</span></p>
+      <p><span>Delivery</span><span>₹${delivery}</span></p>
+      <hr>
+      <p><strong>Total</strong><strong>₹${total}</strong></p>
+    `;
+
+    function payNow() {
+      localStorage.removeItem("cart");
+      window.location.href = "success.html";
+    }
+  </script>
+
+</body>
+</html>
